@@ -19,6 +19,11 @@ io.on("connection", (socket) => {
     socket.broadcast.emit('received',{message:message,  name: users[socket.id]})
 });
 
+socket.on('disconnect',data=>{
+    socket.broadcast.emit('left',users[socket.id])
+    delete users[socket.id];
+});
+
 
 
 });
