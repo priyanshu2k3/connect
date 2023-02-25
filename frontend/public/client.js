@@ -1,8 +1,11 @@
 const socket = io("ws://localhost:8000");
 
 const form = document.getElementById('send-container');
-const messageInput=document.getElementById('messageInp')
-const messageContainer=document.getElementById("container")
+const messageInput=document.getElementById('messageInp');
+const messageContainer=document.getElementById("container");
+
+var audio = new Audio('ting.mp3');
+   
 
 function append(message,position){
  const messageElement=document.createElement('div')
@@ -11,9 +14,14 @@ function append(message,position){
  messageElement.classList.add(position);
  messageContainer.append(messageElement);
  console.log(message,position,messageContainer);
+
+  if(position == 'left'){
+    console.log('sound is playing');
+    audio.play();
+  }
 }
 
-const name=  prompt("entern your name to join ");
+//const name=  prompt("entern your name to join ");
 
 socket.emit("new-user-joined",name);
 
