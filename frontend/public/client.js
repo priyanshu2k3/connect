@@ -21,7 +21,7 @@ function append(message,position){
   }
 }
 
-//const name=  prompt("entern your name to join ");
+const name=  prompt("entern your name to join ");
 
 socket.emit("new-user-joined",name);
 
